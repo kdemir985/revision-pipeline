@@ -108,11 +108,7 @@ results/
 └── transformer_summary.csv
 ```
 
-## 5. Mapping to Reviewer #5 concerns
 
-See [`REVIEWER_RESPONSE_MAP.md`](REVIEWER_RESPONSE_MAP.md) for a
-point-by-point map from each reviewer concern to the script(s) that
-address it and the table(s) produced.
 
 ## 6. Reproducibility
 
