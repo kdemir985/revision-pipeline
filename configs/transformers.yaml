@@ -1,0 +1,46 @@
+# Transformer matrix for the revision (Reviewer Major #1).
+#
+# - mBERT  : original anchor model from the submitted manuscript
+# - BERTurk: Turkish-native pretraining (directly addresses Major #1)
+# - XLM-R  : multilingual rival (directly addresses Major #1)
+# - ALBERT : kept and reframed as English-monolingual control baseline
+# - ELECTRA: kept and reframed as English-monolingual control baseline
+
+models:
+  - id: mbert
+    hf_name: bert-base-multilingual-cased
+    label: mBERT
+    family: multilingual
+
+  - id: berturk
+    hf_name: dbmdz/bert-base-turkish-cased
+    label: BERTurk
+    family: turkish
+
+  - id: xlmr
+    hf_name: xlm-roberta-base
+    label: XLM-R
+    family: multilingual
+
+  - id: albert
+    hf_name: albert-base-v2
+    label: ALBERT (EN-only)
+    family: english_control
+
+  - id: electra
+    hf_name: google/electra-base-discriminator
+    label: ELECTRA (EN-only)
+    family: english_control
+
+# Default training hyperparameters (paper baseline; Mod #12 grid is separate)
+training:
+  num_train_epochs: 5
+  learning_rate: 2.0e-5
+  per_device_train_batch_size: 16
+  per_device_eval_batch_size: 32
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  max_seq_length: 128
+  load_best_model_at_end: true
+  metric_for_best_model: f1_macro
+  internal_val_fraction: 0.15
